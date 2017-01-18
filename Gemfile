@@ -51,3 +51,9 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# https://github.com/haml/haml/tree/rails_4.1.0.rc1
+gem 'haml-rails'
+
+# https://docs.mongodb.com/ruby-driver/master/tutorials/6.0.0/mongoid-installation/
+gem 'mongoid', '~> 6.0.0'
