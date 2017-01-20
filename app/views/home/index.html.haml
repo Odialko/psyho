@@ -1,5 +1,5 @@
 :scss
-  .main_background_color {
+  .main-background-color {
   //TODO: change calc(100vh - (footer+header))
     min-height: calc(100vh);
     background-color: #ebecec;
@@ -21,7 +21,7 @@
   }
 
   @media (max-width: 1199px) {
-    .main_background_color {
+    .main-background-color {
       .menu-intro {
         div {
           a {
@@ -33,7 +33,7 @@
   }
 
   @media (max-width: 991px) {
-    .main_background_color {
+    .main-background-color {
       .menu-intro {
         div {
           a {
@@ -45,13 +45,13 @@
   }
 
   @media (max-width: 767px) {
-    .main_background_color {
+    .main-background-color {
       .menu-intro {
         div {
           a {
             font-size: 1.2rem;
           }
-          .left_margin {
+          .img-content-margin {
             margin-left: 15%;
           }
         }
@@ -59,7 +59,7 @@
     }
   }
 
-.main_background_color
+.main-background-color
   .container.menu-intro
     .row
       .col-sm-2.col-xs-5.col-xs-offset-2
@@ -68,7 +68,7 @@
       .col-sm-2.col-xs-5
         =image_tag "menu_intro_2.png", class: "img-responsive"
         =link_to "СЕМЕЙНАЯ ПСИХОАНАЛИТИЧЕСКАЯ ТЕРАПИЯ", '#'
-      .col-sm-2.col-xs-5.left_margin
+      .col-sm-2.col-xs-5.img-content-margin
         =image_tag "menu_intro_3.png", class: "img-responsive"
         =link_to "ИНДИВИДУАЛЬНЫЙ ПСИХОАНАЛИЗ", '#'
       .col-sm-2.col-xs-5
