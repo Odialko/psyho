@@ -5,9 +5,10 @@
       .main-button-text {
         position: absolute;
         margin-top: -1.7%;
+        //margin-left: 47.3%;
         margin-left: 47.3%;
-        font-size: 2rem;
         color: white;
+        font-size: 20px;
       }
     }
     .header-solid-line {
@@ -18,6 +19,33 @@
       width: 20%;
       margin-left: -10%;
       margin-top: -1.7%;
+    }
+  }
+  @media (min-width: 1024px) {
+    header {
+      .main-button-container {
+        .main-button-text {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+  @media (max-width: 1024px) {
+    header {
+      .main-button-container {
+        .main-button-text {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    header {
+      .main-button-container {
+        .main-button-text {
+          font-size: 10px;
+        }
+      }
     }
   }
 %header
