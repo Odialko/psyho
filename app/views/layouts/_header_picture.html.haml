@@ -1,1 +1,29 @@
+:scss
+  header {
+    .main-button-container {
+      text-align: center;
+      .main-button-text {
+        position: absolute;
+        margin-top: -1.7%;
+        margin-left: 47.3%;
+        font-size: 2rem;
+        color: white;
+      }
+    }
+    .header-solid-line {
+      margin-top: -4%;
+    }
+    .red_link_button {
+      position: absolute;
+      width: 20%;
+      margin-left: -10%;
+      margin-top: -1.7%;
+    }
+  }
 %header
+  =image_tag "header_main_image.png", class: 'img-responsive header-image'
+  =image_tag "header_solid_line.png", class: 'img-responsive header-solid-line'
+  .main-button-container
+    =link_to do
+      =image_tag "red_link_button.png", class: 'red_link_button'
+      .main-button-text Головна
