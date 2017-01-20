@@ -1,1 +1,70 @@
+:scss
+  header {
+    .welcome-text {
+      position: absolute;
+      margin-top: -20%;
+      margin-left: 25%;
+    }
+    .main-button-container {
+      text-align: center;
+      .main-button-text {
+        position: absolute;
+        margin-top: -1.7%;
+        margin-left: 47.3%;
+        color: white;
+        font-size: 20px;
+      }
+      .active {
+        cursor: default;
+      }
+    }
+    .header-solid-line {
+      margin-top: -4%;
+    }
+    .red-link-button {
+      position: absolute;
+      width: 20%;
+      margin-left: -10%;
+      margin-top: -1.7%;
+    }
+  }
+  @media (min-width: 1024px) {
+    header {
+      .main-button-container {
+        .main-button-text {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+  @media (max-width: 1024px) {
+    header {
+      .main-button-container {
+        .main-button-text {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    header {
+      .main-button-container {
+        .main-button-text {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+
 %header
+  =image_tag "header_main_image.png", class: 'img-responsive header-image'
+  .welcome-text
+    %p Добро пожаловать
+    %p в психоаналитический кабинет
+    %p Русланы Тимчук
+  =image_tag "header_solid_line.png", class: 'img-responsive header-solid-line'
+  .main-button-container
+    =link_to '', class: "#{check_action}" do
+      =image_tag "red_link_button.png", class: 'red-link-button'
+      -unless params[:action].eql? 'index'
+        .main-button-text Главная
