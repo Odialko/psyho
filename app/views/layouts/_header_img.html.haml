@@ -1,3 +1,8 @@
+:scss
+  .main {
+    margin: -50px 0 0 0;
+  }
+
 =image_tag main_img, class: 'img-responsive header-image'
 
 - if request.path.eql? root_path
@@ -5,5 +10,8 @@
     %p Добро пожаловать
     %p в психоаналитический кабинет
     %p Русланы Тимчук
+
+//TODO: розібрати helper
+-#=image_tag border_img, class: "img-responsive header-solid-line #{add_css_class('main')}"
 
 =image_tag border_img, class: 'img-responsive header-solid-line'
