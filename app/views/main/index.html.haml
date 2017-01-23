@@ -1,3 +1,14 @@
-= render partial: 'layouts/header_img', locals: { main_img: 'header_main_image.png',
-                                                  border_img: 'header_solid_line.png' }
+= stylesheet_link_tag 'my_style/test', media: 'all'
+-#Header block
+-#= render 'layouts/header_intro'
 
+-#= render partial: 'layouts/header_img', locals: { main_img: 'header_main_image.png',
+-#                                                  border_img: 'header_solid_line.png' }
+
+%header
+
+  = render partial: 'layouts/header_img', locals: { main_img: 'header_main_image.png',
+                                                    border_img: 'header_solid_line.png' }
+
+  = render partial: 'layouts/button', locals: { btn_text: 'Основная',
+                                                url: root_path }

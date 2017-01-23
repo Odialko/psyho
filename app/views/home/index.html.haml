@@ -1,6 +1,5 @@
 :scss
   body {
-    background-color: #ebecec;
     .main-background-color {
       .menu-intro {
         div {
@@ -51,8 +50,13 @@
     }
   }
 
--#Header block
-= render 'layouts/header_picture'
+%header
+
+  = render partial: 'layouts/header_img', locals: { main_img: 'header_intro_image.png',
+                                                    border_img: 'header_solid_line.png' }
+
+  = render partial: 'layouts/button', locals: { btn_text: 'Главная',
+                                                url: main_page_path }
 
 -#Cabinets block
 = render partial: 'cabinets'
