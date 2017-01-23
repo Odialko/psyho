@@ -13,3 +13,6 @@
   %body
     -#= render 'layouts/header_picture'
     = yield
+
+    - if request.path.eql? root_path
+      = render partial: 'layouts/footer'
