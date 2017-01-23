@@ -90,18 +90,9 @@
   }
 
 %header
-  =image_tag "header_main_image.png", class: 'img-responsive header-image'
-  .welcome-text
-    %p Добро пожаловать
-    %p в психоаналитический кабинет
-    %p Русланы Тимчук
-  =image_tag "header_solid_line.png", class: 'img-responsive header-solid-line'
-  .main-button-container
-    -if params[:controller].eql? 'home'
-      =link_to '#' do
-        =image_tag "red_link_button.png", class: 'red-link-button'
-        .main-button-text Главная
-    -else
-      =link_to root_path do
-        =image_tag "red_link_button.png", class: 'red-link-button'
-        .main-button-text Основная
+
+  = render partial: 'layouts/header_img', locals: { main_img: 'header_main_image.png',
+                                                    border_img: 'header_solid_line.png' }
+
+  = render partial: 'layouts/button', locals: { btn_text: 'Главная',
+                                                url: '#' }
