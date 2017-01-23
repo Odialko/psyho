@@ -17,6 +17,7 @@
       }
     }
   }
+
   @media (max-width: 1199px) {
     html {
       body {
@@ -67,10 +68,3 @@
         =link_to "БИЗНЕС-ПСИХОЛОГИЧЕСКОЕ КОНСУЛЬТИРОВАНИЕ", '#'
 
 = render 'footer'
-
-:javascript
-  $(document).ready(function() {
-    let header_height = $('header').height();
-    let footer_height = $('footer').height();
-    $('.main-background-color').css('min-height', $(window).height() - header_height - footer_height);
-  })
