@@ -21,9 +21,6 @@
         color: white;
         font-size: 20px;
       }
-      .active {
-        cursor: default;
-      }
     }
     .header-solid-line {
       margin-top: -4%;
@@ -38,6 +35,11 @@
   }
   @media (min-width: 1920px) {
     header {
+      .main-button-container {
+        .main-button-text {
+          font-size: 25px;
+        }
+      }
       .welcome-text {
         font-size: 3rem;
       }
@@ -95,7 +97,11 @@
     %p Русланы Тимчук
   =image_tag "header_solid_line.png", class: 'img-responsive header-solid-line'
   .main-button-container
-    =link_to '', class: "#{check_action}" do
-      =image_tag "red_link_button.png", class: 'red-link-button'
-      -unless params[:action].eql? 'index'
+    -if params[:controller].eql? 'home'
+      =link_to '#' do
+        =image_tag "red_link_button.png", class: 'red-link-button'
         .main-button-text Главная
+    -else
+      =link_to root_path do
+        =image_tag "red_link_button.png", class: 'red-link-button'
+        .main-button-text Основная
