@@ -54,21 +54,8 @@
 -#Header block
 = render 'layouts/header_picture'
 
-.main-background-color
-  .container.menu-intro
-    .row
-      .col-sm-2.col-xs-5.col-xs-offset-2
-        =image_tag "menu_intro_1.png", class: "img-responsive"
-        =link_to "ДЕТСКИЙ ПСИХОАНАЛИЗ", '#'
-      .col-sm-2.col-xs-5
-        =image_tag "menu_intro_2.png", class: "img-responsive"
-        =link_to "СЕМЕЙНАЯ ПСИХОАНАЛИТИЧЕСКАЯ ТЕРАПИЯ", '#'
-      .col-sm-2.col-xs-5.img-content-margin
-        =image_tag "menu_intro_3.png", class: "img-responsive"
-        =link_to "ИНДИВИДУАЛЬНЫЙ ПСИХОАНАЛИЗ", '#'
-      .col-sm-2.col-xs-5
-        =image_tag "menu_intro_4.png", class: "img-responsive"
-        =link_to "БИЗНЕС-ПСИХОЛОГИЧЕСКОЕ КОНСУЛЬТИРОВАНИЕ", '#'
+-#Cabinets block
+= render 'cabinets'
 
 -#Footer block
 = render 'footer'
