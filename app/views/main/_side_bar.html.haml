@@ -1,16 +1,20 @@
 :scss
   .side-bar-container {
     margin-left: 20px;
+    text-decoration: none;
+    a {
+      text-decoration: none;
+    }
     .side-bar-button {
+      text-decoration: none;
+      color: #94000c;
       padding: 5px;
       border-left: 3px solid #ebecec;
-      a {
-        text-decoration: none;
-        color: #94000c;
-      }
     }
     .side-bar-button:hover {
       border-left: 3px solid #94000c;
+      background-color: white;
+      font-weight: 600;
     }
   }
   @media (min-width: 768px) and (max-width: 1200px) {
@@ -22,36 +26,36 @@
   }
 
 .side-bar-container
-  .side-bar-button
-    = link_to '' do
+  = link_to '' do
+    .side-bar-button
       ОБО МНЕ
-  .side-bar-button
-    = link_to '' do
+  = link_to '' do
+    .side-bar-button
       О ПСИХОАНАЛИТИЧЕСКОМ МЕТОДЕ
-  .side-bar-button
-    = link_to '' do
+  = link_to '' do
+    .side-bar-button
       ИНДИВИДУАЛЬНЫЙ АНАЛИЗ
-  .side-bar-button
-    = link_to '' do
+  = link_to '' do
+    .side-bar-button
       ДЕТСКИЙ ПСИХОАНАЛИЗ
-  .side-bar-button
-    = link_to '' do
+  = link_to '' do
+    .side-bar-button
       СЕМЕЙНАЯ ПСИХОАНАЛИТИЧЕСКАЯ ТЕРАПИЯ
-  .side-bar-button
-    = link_to '' do
+  = link_to '' do
+    .side-bar-button
       БИЗСЕН-ПСИХОЛОГИЧЕСКОЕ КОНСУЛЬТИРОВАНИЕ
-  .side-bar-button
-    = link_to '' do
+  = link_to '' do
+    .side-bar-button
       МЕРОПРИЯТИЯ
-  .side-bar-button
-    = link_to '' do
+  = link_to '' do
+    .side-bar-button
       КИНОКЛУБ
-  .side-bar-button
-    = link_to '' do
+  = link_to '' do
+    .side-bar-button
       СТАТЬИ
-  .side-bar-button
-    = link_to '' do
+  = link_to '' do
+    .side-bar-button
       КОНТАКТЫ
-  .side-bar-button
-    = link_to '' do
+  = link_to '' do
+    .side-bar-button
       БЛОГ
