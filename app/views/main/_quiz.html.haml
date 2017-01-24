@@ -1,5 +1,6 @@
 :scss
   .quiz-container {
+    border-left: 2px solid #b3b3b3;
     margin-top: 15px;
     .quiz-text {
       color: #94000c;
@@ -8,7 +9,17 @@
     }
     .quiz-chart {
     }
-    .quiz-data {
+    .quiz-points {
+      margin-left: 7px;
+      .point {
+        background-color: #94000c;
+        border-radius: 50%;
+        color: white;
+        padding: 1px 5px 1px 5px;
+      }
+    }
+    .voted {
+      margin-left: 7px;
     }
   }
 
@@ -19,39 +30,61 @@
     .quiz-text-data
       На Ваш взгляд, регулирование и ограничение распространения информации в интеренете...
   .quiz-chart
-    %canvas#quizCart{:height => "400", :width => "400"}
-  .quiz-data
+    %canvas#quizCart{:height => '400', :width => '400'}
+  .quiz-points
+    .col-xs-1.point 1
+    .col-xs-9 Необходимы
+    .col-xs-2 123
+    .col-xs-1.point 2
+    -#%p
+    -#  %span.point 1
+    -#  Необходимы
+    -#%p
+    -#  %span.point 2
+    -#  Вполне допустимы
+    -#%p
+    -#  %span.point 3
+    -#  Допустимы, но ими нельзя злоупотреблять
+    -#%p
+    -#  %span.point 4
+    -#  Совершенно недопустимы
+  .voted
+    Проголосовало
 
 :javascript
-  let ctx = document.getElementById("quizCart");
-  let quizCart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-          labels: ["1", "2", "3", "4"],
-          datasets: [{
-              data: [2, 12, 28, 58],
-              backgroundColor: [
-                  'red',
-                  'red',
-                  'red',
-                  'red'
-              ]
-          }]
-      },
-      options: {
-        legend: {
-          display: false,
-        },
-        scales: {
-            yAxes: [{
-              display: false,
-                ticks: {
-                    beginAtZero:true,
-                }
-            }],
-            xAxes: [{
-              display: false,
-            }]
-        }
-      }
+  $(document).ready(function() {
+    buildChart("quizCart");
   });
+
+  function buildChart(selector) {
+    let ctx = document.getElementById(selector);
+    let quizCart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["1", "2", "3", "4"],
+            datasets: [{
+                data: [2, 12, 28, 58],
+                backgroundColor: [
+                    '#94000c',
+                    '#94000c',
+                    '#94000c',
+                    '#94000c'
+                ]
+            }]
+        },
+        options: {
+          legend: {
+            display: false,
+          },
+          scales: {
+              yAxes: [{
+                display: false
+              }],
+              xAxes: [{
+                display: false,
+              }]
+          }
+        }
+    });
+  }
+
