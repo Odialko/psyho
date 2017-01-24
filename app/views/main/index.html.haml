@@ -1,4 +1,3 @@
-= stylesheet_link_tag 'my_style/test', media: 'all'
 -#Header block
 -#= render 'layouts/header_intro'
 
@@ -13,4 +12,11 @@
   = render partial: 'layouts/button', locals: { btn_text: 'Основная',
                                                 url: root_path }
 
-  = render partial: 'main/quote'
+.quote-block
+  .container-fluid
+    .row
+      .col-sm-3.col-md-2.col-md-offset-2
+        = render partial: 'main/side_bar'
+      .col-sm-6.col-md-4
+        = render partial: 'main/quote'
+
