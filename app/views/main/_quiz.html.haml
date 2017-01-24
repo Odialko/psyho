@@ -1,0 +1,57 @@
+:scss
+  .quiz-container {
+    margin-top: 15px;
+    .quiz-text {
+      color: #94000c;
+      border-left: 4px solid #94000c;
+      padding-left: 1rem;
+    }
+    .quiz-chart {
+    }
+    .quiz-data {
+    }
+  }
+
+.quiz-container
+  .quiz-text
+    .quiz-title
+      %h3 Опрос
+    .quiz-text-data
+      На Ваш взгляд, регулирование и ограничение распространения информации в интеренете...
+  .quiz-chart
+    %canvas#quizCart{:height => "400", :width => "400"}
+  .quiz-data
+
+:javascript
+  let ctx = document.getElementById("quizCart");
+  let quizCart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: ["1", "2", "3", "4"],
+          datasets: [{
+              data: [2, 12, 28, 58],
+              backgroundColor: [
+                  'red',
+                  'red',
+                  'red',
+                  'red'
+              ]
+          }]
+      },
+      options: {
+        legend: {
+          display: false,
+        },
+        scales: {
+            yAxes: [{
+              display: false,
+                ticks: {
+                    beginAtZero:true,
+                }
+            }],
+            xAxes: [{
+              display: false,
+            }]
+        }
+      }
+  });
