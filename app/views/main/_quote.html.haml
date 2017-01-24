@@ -3,12 +3,13 @@
     .vertical-line-quote-text {
       border-left: 4px solid #94000c;
       .quote-title-text {
+        font-size: 1.4rem;
         margin-left: 1rem;
         color: #94000c;
       }
       .quote-main-text {
         margin-left: 3rem;
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         q {
           quotes: "\00ab" "\00bb";
         }
@@ -19,9 +20,9 @@
     }
   }
 
-//TODO: col-md-offset-3 забрати, коли зробиться cart#16 "Обо мне"
-.vertical-line-quote-text
-  %h3.text-left.quote-title-text ЦИТАТА НЕДЕЛИ
-  %p.quote-main-text
-    %q В тот момент, когда человек начинает задумываться о смысле и ценности жизни, можно начинать считать его больным.
-  %p.text-right.quote-author-text Зигмунд Фрейд
+.quote-block
+  .vertical-line-quote-text
+    %p.text-left.quote-title-text ЦИТАТА НЕДЕЛИ
+    %p.quote-main-text
+      %q В тот момент, когда человек начинает задумываться о смысле и ценности жизни, можно начинать считать его больным.
+    %p.text-right.quote-author-text Зигмунд Фрейд
