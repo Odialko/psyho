@@ -12,11 +12,13 @@
   = render partial: 'layouts/button', locals: { btn_text: 'Основная',
                                                 url: root_path }
 
-.quote-block
-  .container-fluid
-    .row
-      .col-sm-3.col-md-2.col-md-offset-2
-        = render partial: 'main/side_bar'
-      .col-sm-6.col-md-4
-        = render partial: 'main/quote'
+
+.container
+  .row
+    .col-xs-3
+      = render partial: 'main/side_bar'
+    .col-xs-6
+      = render partial: 'main/quote'
+    .col-xs-3
+      some block
 
