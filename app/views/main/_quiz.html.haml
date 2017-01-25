@@ -1,0 +1,113 @@
+:scss
+  .quiz-container {
+    border-left: 2px solid #b3b3b3;
+    margin-top: 15px;
+    .quiz-text {
+      color: #94000c;
+      border-left: 4px solid #94000c;
+      padding-left: 1rem;
+    }
+    .quiz-chart {
+    }
+    .quiz-points {
+      .point {
+        .number {
+          padding: 1px 1px 1px 5px;
+        }
+        padding: 1px 5px 1px 5px;
+      }
+    }
+    .point {
+      .people-count {
+        color: #94000c;
+      }
+    }
+    .vote-container {
+      .voted-count {
+      }
+    }
+  }
+
+  @media( max-width: 1199px ) {
+    .quiz-container {
+      font-size: 10px;
+    }
+  }
+  @media( max-width: 991px ) {
+    .quiz-container {
+      font-size: 8px;
+    }
+  }
+.quiz-container
+  .quiz-text
+    .quiz-title
+      %h3 Опрос
+    .quiz-text-data
+      На Ваш взгляд, регулирование и ограничение распространения информации в интеренете...
+  .quiz-chart
+    %canvas#quizCart{:height => '400', :width => '400'}
+  .quiz-points
+    .container-fluid
+      .point
+        .col-xs-1.number 1
+        .col-xs-7 Необходимы
+        .col-xs-2.people-count 123
+    .container-fluid
+      .point
+        .col-xs-1.number 2
+        .col-xs-7 Проголосовало
+        .col-xs-2.people-count 13
+    .container-fluid
+      .point
+        .col-xs-1.number 3
+        .col-xs-7 Допустимы, но ими нельзя злоупотреблять
+        .col-xs-2.people-count 234
+    .container-fluid
+      .point
+        .col-xs-1.number 4
+        .col-xs-7 Совершенно недопустимы
+        .col-xs-2.people-count 23
+  .vote-container
+    .container-fluid
+      .col-xs-6.voted
+        Проголосовало
+      .col-xs-6.voted-count
+        488 человек
+
+:javascript
+  $(document).ready(function() {
+    buildChart("quizCart");
+  });
+
+  function buildChart(selector) {
+    let ctx = document.getElementById(selector);
+    let quizCart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["1", "2", "3", "4"],
+            datasets: [{
+                data: [2, 12, 28, 58],
+                backgroundColor: [
+                    '#94000c',
+                    '#94000c',
+                    '#94000c',
+                    '#94000c'
+                ]
+            }]
+        },
+        options: {
+          legend: {
+            display: false,
+          },
+          scales: {
+              yAxes: [{
+                display: false
+              }],
+              xAxes: [{
+                // display: false,
+              }]
+          }
+        }
+    });
+  }
+

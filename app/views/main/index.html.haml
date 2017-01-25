@@ -1,9 +1,3 @@
--#Header block
--#= render 'layouts/header_intro'
-
--#= render partial: 'layouts/header_img', locals: { main_img: 'header_main_image.png',
--#                                                  border_img: 'header_solid_line.png' }
-
 %header
 
   = render partial: 'layouts/header_img', locals: { main_img: 'header_main_image.png',
@@ -12,14 +6,13 @@
   = render partial: 'layouts/button', locals: { btn_text: 'Основная',
                                                 url: root_path }
 
-
-.container
-  .row
-    .col-xs-3
-      = render partial: 'main/side_bar'
-    .col-xs-6
-      = render partial: 'main/quote'
-      = render partial: 'main/calendar'
-    .col-xs-3
-      some block
+  .container
+    .row
+      .col-xs-3
+        = render partial: 'main/side_bar'
+      .col-xs-6
+        = render partial: 'main/quote'
+        = render partial: 'main/calendar'
+      .col-xs-3
+        = render partial: 'main/quiz'
 
