@@ -85,7 +85,8 @@
         type: 'bar',
         data: {
             labels: ["1", "2", "3", "4"],
-            datasets: [{
+            datasets: [
+              {
                 data: [2, 12, 28, 58],
                 backgroundColor: [
                     '#94000c',
@@ -93,7 +94,17 @@
                     '#94000c',
                     '#94000c'
                 ]
-            }]
+              },
+              {
+                data: [98, 88, 72, 42],
+                backgroundColor: [
+                    '#cccccc',
+                    '#cccccc',
+                    '#cccccc',
+                    '#cccccc'
+                ]
+              }
+            ]
         },
         options: {
           legend: {
@@ -101,9 +112,11 @@
           },
           scales: {
               yAxes: [{
+                stacked: true,
                 display: false
               }],
               xAxes: [{
+                stacked: true,
                 // display: false,
               }]
           }
