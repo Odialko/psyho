@@ -7,8 +7,6 @@
       border-left: 4px solid #94000c;
       padding-left: 1rem;
     }
-    .quiz-chart {
-    }
     .quiz-points {
       .point {
         .number {
@@ -17,14 +15,12 @@
         padding: 1px 5px 1px 5px;
       }
     }
-    .point {
-      .people-count {
-        color: #94000c;
-      }
-    }
     .vote-container {
       .voted-count {
       }
+    }
+    .test {
+      list-style-type: none;
     }
   }
 
@@ -38,6 +34,7 @@
       font-size: 8px;
     }
   }
+
 .quiz-container
   .quiz-text
     .quiz-title
@@ -48,31 +45,40 @@
     %canvas#quizCart{:height => '400', :width => '400'}
   .quiz-points
     .container-fluid
-      .point
-        .col-xs-1.number 1
-        .col-xs-7 Необходимы
-        .col-xs-2.people-count 123
-    .container-fluid
-      .point
-        .col-xs-1.number 2
-        .col-xs-7 Проголосовало
-        .col-xs-2.people-count 13
-    .container-fluid
-      .point
-        .col-xs-1.number 3
-        .col-xs-7 Допустимы, но ими нельзя злоупотреблять
-        .col-xs-2.people-count 234
-    .container-fluid
-      .point
-        .col-xs-1.number 4
-        .col-xs-7 Совершенно недопустимы
-        .col-xs-2.people-count 23
-  .vote-container
-    .container-fluid
-      .col-xs-6.voted
-        Проголосовало
-      .col-xs-6.voted-count
-        488 человек
+      .col-xs-1
+        .test
+          %ul
+            %li 1
+            %li 2
+            %li 3
+            %li 4
+
+  -#  .container-fluid
+  -#    .point
+  -#      .col-xs-1.number 1
+  -#      .col-xs-7 Необходимы
+  -#      .col-xs-2.people-count 123
+  -#  .container-fluid
+  -#    .point
+  -#      .col-xs-1.number 2
+  -#      .col-xs-7 Проголосовало
+  -#      .col-xs-2.people-count 13
+  -#  .container-fluid
+  -#    .point
+  -#      .col-xs-1.number 3
+  -#      .col-xs-7 Допустимы, но ими нельзя злоупотреблять
+  -#      .col-xs-2.people-count 234
+  -#  .container-fluid
+  -#    .point
+  -#      .col-xs-1.number 4
+  -#      .col-xs-7 Совершенно недопустимы
+  -#      .col-xs-2.people-count 23
+  -#.vote-container
+  -#  .container-fluid
+  -#    .col-xs-6.voted
+  -#      Проголосовало
+  -#    .col-xs-6.voted-count
+  -#      488 человек
 
 :javascript
   $(document).ready(function() {
@@ -80,10 +86,8 @@
   });
 
   function buildChart(selector) {
-    let ctx = document.getElementById(selector);
-    let quizCart = new Chart(ctx, {
-        type: 'bar',
-        data: {
+    var ctx = document.getElementById(selector);
+    var data = {
             labels: ["1", "2", "3", "4"],
             datasets: [
               {
@@ -105,10 +109,16 @@
                 ]
               }
             ]
-        },
+        };
+    var quizCart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
         options: {
+          tooltips: {
+            enabled: false
+          },
           legend: {
-            display: false,
+            display: false
           },
           scales: {
               yAxes: [{
@@ -116,8 +126,11 @@
                 display: false
               }],
               xAxes: [{
-                stacked: true,
-                // display: false,
+                gridLines: {
+                  display: false
+                },
+                color: '#94000c',
+                stacked: true
               }]
           }
         }
