@@ -8,30 +8,26 @@
       padding-left: 1rem;
     }
     .quiz-points {
-      .point {
-        .number {
-          padding: 1px 1px 1px 5px;
+      .points-container {
+        border-bottom: 1px solid #94000c;
+        tr {
+          td {
+            padding-right: 5px;
+          }
+          td:nth-child(3) {
+            color: #94000c;
+            text-align: right;
+          }
         }
-        padding: 1px 5px 1px 5px;
       }
-    }
-    .vote-container {
-      .voted-count {
+      .voted-container {
+        tr {
+          td:nth-child(2) {
+            //padding-left: 45px;
+            text-align: right;
+          }
+        }
       }
-    }
-    .test {
-      list-style-type: none;
-    }
-  }
-
-  @media( max-width: 1199px ) {
-    .quiz-container {
-      font-size: 10px;
-    }
-  }
-  @media( max-width: 991px ) {
-    .quiz-container {
-      font-size: 8px;
     }
   }
 
@@ -45,40 +41,30 @@
     %canvas#quizCart{:height => '400', :width => '400'}
   .quiz-points
     .container-fluid
-      .col-xs-1
-        .test
-          %ul
-            %li 1
-            %li 2
-            %li 3
-            %li 4
+      .points-container
+        %table
+          %tr
+            %td 1
+            %td Необходимы
+            %td 4
+          %tr
+            %td 2
+            %td Вполне допустимы
+            %td 23
+          %tr
+            %td 3
+            %td Допустимы, но ими нельзя злоупотреблять
+            %td 54
+          %tr
+            %td 4
+            %td Совершенно недопустимы
+            %td 125
+      .voted-container
+        %table
+          %tr
+            %td Проголосовало
+            %td 206 Человек
 
-  -#  .container-fluid
-  -#    .point
-  -#      .col-xs-1.number 1
-  -#      .col-xs-7 Необходимы
-  -#      .col-xs-2.people-count 123
-  -#  .container-fluid
-  -#    .point
-  -#      .col-xs-1.number 2
-  -#      .col-xs-7 Проголосовало
-  -#      .col-xs-2.people-count 13
-  -#  .container-fluid
-  -#    .point
-  -#      .col-xs-1.number 3
-  -#      .col-xs-7 Допустимы, но ими нельзя злоупотреблять
-  -#      .col-xs-2.people-count 234
-  -#  .container-fluid
-  -#    .point
-  -#      .col-xs-1.number 4
-  -#      .col-xs-7 Совершенно недопустимы
-  -#      .col-xs-2.people-count 23
-  -#.vote-container
-  -#  .container-fluid
-  -#    .col-xs-6.voted
-  -#      Проголосовало
-  -#    .col-xs-6.voted-count
-  -#      488 человек
 
 :javascript
   $(document).ready(function() {
