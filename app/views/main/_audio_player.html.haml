@@ -1,0 +1,29 @@
+:scss
+  .browser-player {
+  margin-top: 20px;
+    width: 100%;
+    height: 300px;
+    background-color: #190e13;
+
+  }
+
+.browser-player
+  .item
+    = image_tag 'news_img.png', class: 'img-responsive'
+  .item
+    = image_tag 'menu_intro_3.png', class: 'img-responsive'
+  .item
+    = image_tag 'menu_intro_2.png', class: 'img-responsive'
+
+%audio{ controls: '' }
+  %source{ src: 'lp.mp3', type: 'audio/mp3' }
+  %source{ src: 'lp.ogg', type: 'audio/ogg' }
+  Ваш браузер не пожжерживает тег audio!
+
+:javascript
+  // $('.browser-player').slick();
+    $(document).ready(function(){
+      $('.browser-player').slick({
+        arrows: false;
+      });
+    });
