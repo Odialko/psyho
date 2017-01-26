@@ -12,7 +12,7 @@
   }
 
   .player {
-    margin-top: 2rem;
+    //margin-top: 1rem;
     position: relative;
     width: 100%;
     min-height: 10em;
@@ -168,7 +168,7 @@
 
   .progress {
     flex-grow: 2;
-    height: 0.3em;
+    height: 0.4em;
     background-color: #DFA3A0;
     //border-radius: 0.0625em;
     //box-shadow: #190e13;
@@ -184,7 +184,7 @@
   .actions {
     position: relative;
     width: 100%;
-    padding: 1em 0 1.125em;
+    //padding: 1em 0 1.125em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -223,7 +223,7 @@
       box-shadow: inset 0 0.25em 1em -0.25em rgba(223, 163, 160, 0.8);
     }
     &:hover::before {
-      background-color: #DFA3A0;
+      background-color: #A27976;
     }
   }
 
@@ -238,7 +238,7 @@
     transform: scaleX(-1);
   }
 
-  .ff {
+  .next-song {
     left: -0.25em;
     margin-right: 0.375em;
   }
@@ -259,7 +259,7 @@
       width: 100%;
       height: 100%;
       transform: scale(1.2, 0.7) rotate(45deg);
-      background-color: #DFA3A0;
+      background-color: #F7F7F7;
       box-shadow: inset 0 0.125em 0.125em -0.0625em rgba(0, 0, 0, 0.15), 0.0625em 0.0625em 0.125em rgba(255, 255, 255, 1);
     }
     &::after {
@@ -269,7 +269,7 @@
       width: 100%;
       height: 100%;
       transform: scale(1.2, 0.7) rotate(45deg);
-      background-color: #DFA3A0;
+      background-color: #F7F7F7;
       box-shadow: inset 0 0.125em 0.125em -0.0625em rgba(0, 0, 0, 0.15), 0.0625em 0.0625em 0.125em rgba(255, 255, 255, 1);
       left: 0;
       transform: none;
@@ -287,32 +287,32 @@
       left: 0;
       width: 0.4375em;
       transform: none;
-      background-color: #DFA3A0;
+      background-color: #F7F7F7;
       box-shadow: inset 0.0625em 0.125em 0.125em -0.0625em rgba(0, 0, 0, 0.15), 0.0625em 0.0625em 0.125em rgba(255, 255, 255, 1);
     }
     &::after {
       left: 0;
       width: 0.4375em;
       transform: none;
-      background-color: #DFA3A0;
+      background-color: #F7F7F7;
       box-shadow: inset 0.0625em 0.125em 0.125em -0.0625em rgba(0, 0, 0, 0.15), 0.0625em 0.0625em 0.125em rgba(255, 255, 255, 1);
       left: auto;
       right: 0;
     }
   }
 
-  .rw .arrow, .ff .arrow {
+  .rw .arrow, .next-song .arrow {
     width: 20%;
     height: 20%;
     margin-left: 12%;
   }
 
-  .rw .arrow:first-child, .ff .arrow:first-child {
+  .rw .arrow:first-child, .next-song .arrow:first-child {
     margin-left: -4%;
   }
 
   .button:active .arrow::before {
-    background-color: #DFA3A0;
+    background-color: #F7F7F7;
   }
 
   .playing .play-pause .arrow {
@@ -417,6 +417,8 @@
   //}
 
 .player.paused
+  - @array = ['Barbra_Streisand.mp3', 'Im_niasha.mp3', 'in_the_sky.mp3', 'Basta.mp3', 'lp.mp3']
+  - @song = @array[rand(5)]
   .browser-player.center-block
     .item
       = image_tag 'news_img.png', class: 'img-responsive center-block'
@@ -433,7 +435,8 @@
         %span
       %span.duration 0:00
       //TODO: дані про пісню беруться з БД
-    %h3 ИСПОЛНИТЕЛЬ
+    %h3
+      = @song
     %h4 НАЗВАНИЕ ПЕСНИ
   .actions
     %button.shuffle
@@ -444,11 +447,14 @@
       .arrow
     %button.button.play-pause
       .arrow
-    %button.button.ff
+    %button.button.next-song
       .arrow
       .arrow
     %button.repeat
-  %audio{:prelaod => "", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/Wordburglar_Drawings_with_Words.mp3"}
+  -#%audio{:prelaod => "", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/Wordburglar_Drawings_with_Words.mp3"}
+
+  %audio{ prelaod: ""}
+    %source{ src: "#{ @song }", type: 'audio/mp3' }
 
 :javascript
   //slick slider
@@ -524,7 +530,7 @@
   }).on('mousedown', function() {
     var self = $(this);
 
-    if (self.hasClass('ff')) {
+    if (self.hasClass('next-song')) {
       player.addClass('ffing');
       audio[0].playbackRate = 2;
     }
@@ -536,7 +542,7 @@
   }).on('mouseup', function() {
     var self = $(this);
 
-    if (self.hasClass('ff')) {
+    if (self.hasClass('next-song')) {
       player.removeClass('ffing');
       audio[0].playbackRate = 1;
     }
