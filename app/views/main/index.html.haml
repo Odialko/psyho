@@ -12,15 +12,16 @@
   = render partial: 'layouts/button', locals: { btn_text: 'Основная',
                                                 url: root_path }
 
+  .container
+    .row
+      .col-xs-3
+        = render partial: 'main/side_bar'
+        = render partial: 'main/audio_player'
+      .col-xs-6
+        = render partial: 'main/quote'
+        = render partial: 'main/calendar'
+      .col-xs-3
+        = render partial: 'main/quiz'
+        = render partial: 'main/advertising'
 
-.container
-  .row
-    .col-xs-3
-      = render partial: 'main/side_bar'
-      = render partial: 'main/audio_player'
-    .col-xs-6
-      = render partial: 'main/quote'
-      = render partial: 'main/calendar'
-    .col-xs-3
-      some block
 

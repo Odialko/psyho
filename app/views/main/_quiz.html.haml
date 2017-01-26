@@ -1,0 +1,136 @@
+:scss
+  .quiz-container {
+    border-left: 2px solid #b3b3b3;
+    margin-top: 15px;
+    .quiz-text {
+      color: #94000c;
+      border-left: 4px solid #94000c;
+      padding-left: 1rem;
+    }
+    .quiz-points {
+      .points-container {
+        border-bottom: 1px solid #94000c;
+        tr {
+          td {
+            vertical-align: top;
+            padding-right: 5px;
+          }
+          td:nth-child(3) {
+            color: #94000c;
+            text-align: right;
+          }
+        }
+      }
+      .voted-container {
+        table {
+          width: 100%;
+          tr {
+            td {
+              vertical-align: top;
+            }
+            td:nth-child(2) {
+              text-align: right;
+              .voted-count {
+                font-weight: 600;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+.quiz-container
+  .quiz-text
+    .quiz-title
+      %h3 Опрос
+    .quiz-text-data
+      На Ваш взгляд, регулирование и ограничение распространения информации в интеренете...
+  .quiz-chart
+    %canvas#quizCart{:height => '400', :width => '400'}
+  .quiz-points
+    .container-fluid
+      .points-container
+        %table
+          %tr
+            %td 1
+            %td Необходимы
+            %td 4
+          %tr
+            %td 2
+            %td Вполне допустимы
+            %td 23
+          %tr
+            %td 3
+            %td Допустимы, но ими нельзя злоупотреблять
+            %td 54
+          %tr
+            %td 4
+            %td Совершенно недопустимы
+            %td 125
+      .voted-container
+        %table
+          %tr
+            %td Проголосовало
+            %td
+              %span.voted-count 206
+              Человек
+
+
+:javascript
+  $(document).ready(function() {
+    buildChart("quizCart");
+  });
+
+  function buildChart(selector) {
+    var ctx = document.getElementById(selector);
+    var data = {
+            labels: ["1", "2", "3", "4"],
+            datasets: [
+              {
+                data: [2, 12, 28, 58],
+                backgroundColor: [
+                    '#94000c',
+                    '#94000c',
+                    '#94000c',
+                    '#94000c'
+                ]
+              },
+              {
+                data: [98, 88, 72, 42],
+                backgroundColor: [
+                    '#cccccc',
+                    '#cccccc',
+                    '#cccccc',
+                    '#cccccc'
+                ]
+              }
+            ]
+        };
+    var quizCart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: {
+          tooltips: {
+            enabled: false
+          },
+          legend: {
+            display: false
+          },
+          scales: {
+              yAxes: [{
+                stacked: true,
+                display: false
+              }],
+              xAxes: [{
+                gridLines: {
+                  display: false
+                },
+                color: '#94000c',
+                stacked: true
+              }]
+          }
+        }
+    });
+  }
+
