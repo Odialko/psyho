@@ -1,11 +1,11 @@
 :scss
-  .calendar-block {
-    .calendar-event {
+  .event-block {
+    .event-event {
       font-size: 1.4rem;
       margin-left: 1rem;
       color: #94000c;
     }
-    .calendar-list {
+    .event-list {
       margin-left: 20px;
       margin-bottom: 20px;
       .img-margin {
@@ -15,37 +15,44 @@
       .text-container{
         line-height: 2rem;
         padding-top: 0.5rem;
-        .calendar-date {
+        .event-date {
           font-size: 1.2rem;
           color: #94000c;
         }
-        .calendar-title {
+        .event-title {
           font-size: 1.4rem;
         }
-        .calendar-main-text {
+        .event-main-text {
           font-size: 1.3rem;
         }
-        .calendar-detail-text {
+        .event-detail-text {
           font-style: italic;
           margin-right: 4rem;
           line-height: 0;
         }
       }
     }
+    .paginate-container {
+      text-align: center;
+    }
   }
 
-.calendar-block
-  %p.text-left.calendar-event КАЛЕНДАРЬ СОБЫТИЙ
+.event-block
+  %p.text-left.event-event КАЛЕНДАРЬ СОБЫТИЙ
   - @events.each do |event|
     .row
-      .calendar-list
+      .event-list
         = image_tag event[:img], class: 'img-responsive img-margin pull-left clearfix'
         .text-container
-          %span.calendar-date
+          %span.event-date
             = event[:date]
-          %p.text-left.calendar-title
+          %p.text-left.event-title
             = event[:title]
-          %p.calendar-main-text
+          %p.event-main-text
             = event[:text]
-          %p.text-right.calendar-detail-text
+          %p.text-right.event-detail-text
             =link_to 'детальнее', '#'
+  .paginate-container
+    = paginate @events, :window => 0,
+                        :theme => 'twitter-bootstrap-3',
+                        :pagination_class => 'pagination-sm  pagination-centered'

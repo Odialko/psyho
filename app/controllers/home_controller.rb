@@ -4,6 +4,8 @@ class HomeController < ApplicationController
 
   def main
     stub_data
+    @events = Kaminari.paginate_array(@events).page(params[:page]).per(5)
+     # = Kaminari.paginate_array().page(params[:page]).per(3)
     render 'main/index'
   end
 
@@ -11,6 +13,12 @@ class HomeController < ApplicationController
 
   def stub_data
     @events = [
+      {
+        img: 'news_img.png',
+        date: '28.03.2017',
+        title: 'СЕМЕЙНАЯ ПСИХОАНАЛИТИЧЕСКАЯ ТЕРАПИЯ',
+        text: '"В тот момент, когда человек начинает задумываться о смысле и ценности жизни, можно начинать считать его больным."'
+      },
       {
         img: 'news_img.png',
         date: '28.03.2017',

@@ -39,6 +39,9 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+    bootstrap-kaminari-views (0.0.5)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     bson (4.2.1)
     builder (3.2.3)
     byebug (9.0.6)
@@ -196,12 +199,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-kaminari-views
   byebug
   coffee-rails (~> 4.2)
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
-  kaminari
+  kaminari (>= 0.17.0)
   listen (~> 3.0.5)
   mongoid (~> 6.0.0)
   pry-rails
