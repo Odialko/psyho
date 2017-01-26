@@ -5,7 +5,6 @@ class HomeController < ApplicationController
   def main
     stub_data
     @events = Kaminari.paginate_array(@events).page(params[:page]).per(5)
-     # = Kaminari.paginate_array().page(params[:page]).per(3)
     render 'main/index'
   end
 

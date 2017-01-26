@@ -62,5 +62,5 @@ gem 'mongoid', '~> 6.0.0'
 # kaminari paginator https://github.com/kaminari/kaminari
 gem 'kaminari', '>= 0.17.0'
 
-# bootstrap for kaminari
-gem 'bootstrap-kaminari-views'
+# cute fontawesome http://fontawesome.io/get-started/
+gem 'font-awesome-sass'

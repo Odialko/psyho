@@ -53,6 +53,4 @@
           %p.text-right.event-detail-text
             =link_to 'детальнее', '#'
   .paginate-container
-    = paginate @events, :window => 0,
-                        :theme => 'twitter-bootstrap-3',
-                        :pagination_class => 'pagination-sm  pagination-centered'
+    = paginate @events
