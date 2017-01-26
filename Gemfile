@@ -58,3 +58,6 @@ gem 'haml-rails'
 
 # https://docs.mongodb.com/ruby-driver/master/tutorials/6.0.0/mongoid-installation/
 gem 'mongoid', '~> 6.0.0'
+
+# kaminari paginator
+gem 'kaminari'
