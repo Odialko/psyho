@@ -1,5 +1,25 @@
 :scss
 
+  .volume {
+    position: relative;
+    .fa-volume-off {
+      color: #DFA3A0;
+    }
+    input {
+      bottom: 10px;
+      position: absolute;
+      visibility: hidden;
+    }
+    &:hover {
+      input {
+        visibility: visible;
+      }
+      i {
+        visibility: hidden;
+      }
+    }
+  }
+
   h3 {
     margin-bottom: 0.5em;
     font-weight: 400;
@@ -58,10 +78,20 @@
   .actions {
     position: relative;
     width: 100%;
-    //padding: 1em 0 1.125em;
     display: flex;
     justify-content: center;
     align-items: center;
+    input {
+      type: range;
+      //transform: rotate(90deg);
+      -webkit-appearance: slider-vertical;
+      width: 8px;
+      height: 75px;
+      //position: inherit;
+      //padding: 0 5px;
+      margin-top: -5rem;
+
+    }
   }
 
   button {
@@ -105,7 +135,7 @@
     height: 4em;
   }
 
-  .rw {
+  .previously-song {
     right: -0.25em;
     margin-left: 0.375em;
     transform: scaleX(-1);
@@ -174,13 +204,13 @@
     }
   }
 
-  .rw .arrow, .next-song .arrow {
+  .previously-song .arrow, .next-song .arrow {
     width: 20%;
     height: 20%;
     margin-left: 12%;
   }
 
-  .rw .arrow:first-child, .next-song .arrow:first-child {
+  .previously-song .arrow:first-child, .next-song .arrow:first-child {
     margin-left: -4%;
   }
 
@@ -195,7 +225,7 @@
   }
 
     //змішувач зліва
-  .shuffle {
+  .audio-volume {
     width: 1.375em;
     height: 1.375em;
     color: #DFA3A0;
@@ -207,31 +237,30 @@
       height: 0.125em;
       color: inherit;
       background-color: currentColor;
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: calc(100% + 0.125em);
-        width: 0.5em;
-        height: 1em;
-        transform: skewX(30deg);
-        border-bottom: 0.125em solid;
-        border-left: 0.125em solid;
-        box-shadow: -0.3125em 0em 0 -0.1875em #DFA3A0, inset 0.375em 0.25em 0 -0.25em #DFA3A0;
-      }
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0.6875em;
-        left: calc(100% + 0.625em);
-        border: 0.25em solid transparent;
-        //border-left-width: 0.375em;
-        border-left-color: #DFA3A0;
-      }
-      &:first-child {
-        transform-origin: 0 0.5em;
-        transform: scaleY(-1);
-      }
+      //&::before {
+      //  content: '';
+      //  position: absolute;
+      //  top: 0;
+      //  left: calc(100% + 0.125em);
+      //  width: 0.5em;
+      //  height: 1em;
+      //  transform: skewX(30deg);
+      //  border-bottom: 0.125em solid;
+      //  border-left: 0.125em solid;
+      //  box-shadow: -0.3125em 0em 0 -0.1875em #DFA3A0, inset 0.375em 0.25em 0 -0.25em #DFA3A0;
+      //}
+      //&::after {
+      //  content: '';
+      //  position: absolute;
+      //  top: 0.6875em;
+      //  left: calc(100% + 0.625em);
+      //  border: 0.25em solid transparent;
+      //  border-left-color: #DFA3A0;
+      //}
+      //&:first-child {
+      //  transform-origin: 0 0.5em;
+      //  transform: scaleY(-1);
+      //}
     }
   }
 
@@ -243,33 +272,33 @@
     border: 0.125em solid;
     border-right-color: transparent;
     border-radius: 50%;
-    &::before {
-      content: '';
-      position: absolute;
-      top: -0.125em;
-      left: -0.125em;
-      width: calc(100% + 0.25em);
-      height: calc(100% + 0.25em);
-      transform: rotate(-45deg);
-      border: 0.125em solid transparent;
-      border-right-color: currentColor;
-      border-radius: 50%;
-    }
-    &::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      right: -0.3125em;
-      border: 0.25em solid transparent;
-      border-top-width: 0.375em;
-      border-top-color: currentColor;
-    }
+    //&::before {
+    //  content: '';
+    //  position: absolute;
+    //  top: -0.125em;
+    //  left: -0.125em;
+    //  width: calc(100% + 0.25em);
+    //  height: calc(100% + 0.25em);
+    //  transform: rotate(-45deg);
+    //  border: 0.125em solid transparent;
+    //  border-right-color: currentColor;
+    //  border-radius: 50%;
+    //}
+    //&::after {
+    //  content: '';
+    //  position: absolute;
+    //  top: 50%;
+    //  right: -0.3125em;
+    //  border: 0.25em solid transparent;
+    //  border-top-width: 0.375em;
+    //  border-top-color: currentColor;
+    //}
   }
 
-  .shuffle:active, .playing:active, .play-pause:active, .arrow:active, .repeat:active {
+  .audio-volume:active, .playing:active, .play-pause:active, .arrow:active, .repeat:active {
     color: #6E5252;
   }
-  .shuffle.active, .repeat.active {
+  .audio-volume.active, .repeat.active {
     color: #fff;
   }
 
@@ -284,8 +313,8 @@
   }
 
 .player.paused
-  - @array = ['Barbra_Streisand.mp3', 'Im_niasha.mp3', 'in_the_sky.mp3', 'Basta.mp3', 'lp.mp3']
-  - @song = @array[rand(5)]
+  -#- @array = ['Barbra_Streisand.mp3', 'Im_niasha.mp3', 'in_the_sky.mp3', 'Basta.mp3', 'lp.mp3']
+  -#- @song = @array[rand(5)]
   .browser-player.center-block
     .item
       = image_tag 'news_img.png', class: 'img-responsive center-block'
@@ -302,14 +331,13 @@
         %span
       %span.duration 0:00
       //TODO: дані про пісню беруться з БД
-    %h3
-      = @song
-    %h4 НАЗВАНИЕ ПЕСНИ
+    %h3.song-name
+    %h4.author-name Автор
   .actions
-    %button.shuffle
-      .arrow
-      .arrow
-    %button.button.rw
+    .volume
+      %i.fa.fa-volume-off.fa-lg
+      %input#id-range{ min: '0.0', max: '1.0', value: '0.5', step: '0.01', type: 'range' }
+    %button.button.previously-song
       .arrow
       .arrow
     %button.button.play-pause
@@ -318,24 +346,81 @@
       .arrow
       .arrow
     %button.repeat
-  -#%audio{:prelaod => "", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/Wordburglar_Drawings_with_Words.mp3"}
-
-  %audio{ prelaod: ""}
-    %source{ src: "#{ @song }", type: 'audio/mp3' }
+  %audio#my-audio.format-player{ prelaod: '' }
+    -#%source{ src: "#{ @song }", type: 'audio/mp3' }
+    %source{ type: 'audio/mp3' }
 
 :javascript
+  let songs = ['Barbra_Streisand.mp3', 'Im_niasha.mp3', 'in_the_sky.mp3', 'Basta.mp3', 'lp.mp3'];
+
+  function findPosition() {
+    let songName = $('#my-audio').find('source').attr('src');
+    return songs.findIndex(function(el) {return el == songName});
+  }
+  function nextSong(currentPosition) {
+    let newPosition = 0;
+    if (currentPosition < songs.length - 1) {
+      newPosition = currentPosition + 1;
+    }
+    return newPosition;
+  }
+
+  function prevSong(currentPosition) {
+    let newPosition = songs.length - 1;
+    if (currentPosition > 0) {
+      newPosition = currentPosition - 1;
+    }
+    return newPosition;
+  }
+
+  function setSrc(src){
+    $('.song-name').text(src);
+    $('#my-audio').find('source').attr('src', src);
+    $('#my-audio').load();
+  }
+
+  function changeSong(newPosition) {
+    $('#my-audio')[0].pause();
+    setSrc(songs[newPosition]);
+    $('#my-audio').oncanplaythrough = $('#my-audio')[0].play() ;
+
+    if (player.hasClass('paused')) {
+      player.removeClass('paused').addClass('playing');
+    }
+  }
+
+  $('.next-song').on('click', function() {
+    let curentPosition = findPosition();
+    changeSong(nextSong(curentPosition));
+  });
+
+  $('.previously-song').on('click', function() {
+    let curentPosition = findPosition();
+    changeSong(prevSong(curentPosition));
+  });
+
   //slick slider
   $(document).ready(function(){
+
+    setSrc(songs[Math.floor(Math.random() * (songs.length - 1))]);
+
     $('.browser-player').slick({
       arrows: false,
       autoplay: true,
       autoplaySpeed: 2000,
       speed: 1000
     });
+
+  });
+
+  //audio
+  let vid = document.getElementById('my-audio');
+  $("#id-range").on("input change", function() {
+    vid.volume = document.getElementById("id-range").value;
   });
 
   //player logic
-  var player = $('.player'),
+  let player = $('.player'),
     audio = player.find('audio'),
     duration = $('.duration'),
     currentTime = $('.current-time'),
@@ -389,34 +474,6 @@
     } else if (self.hasClass('play-pause') && player.hasClass('playing')) {
       player.removeClass('playing').addClass('paused');
       audio[0].pause();
-    }
-
-    if (self.hasClass('shuffle') || self.hasClass('repeat')) {
-      self.toggleClass('active');
-    }
-  }).on('mousedown', function() {
-    var self = $(this);
-
-    if (self.hasClass('next-song')) {
-      player.addClass('ffing');
-      audio[0].playbackRate = 2;
-    }
-
-    if (self.hasClass('rw')) {
-      player.addClass('rwing');
-      rewind = setInterval(function() { audio[0].currentTime -= .3; }, 100);
-    }
-  }).on('mouseup', function() {
-    var self = $(this);
-
-    if (self.hasClass('next-song')) {
-      player.removeClass('ffing');
-      audio[0].playbackRate = 1;
-    }
-
-    if (self.hasClass('rw')) {
-      player.removeClass('rwing');
-      clearInterval(rewind);
     }
   });
 
