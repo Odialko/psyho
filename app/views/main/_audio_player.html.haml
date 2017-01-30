@@ -1,6 +1,8 @@
 :scss
   $player-color: #190e13;
   $text-player-color: #fff;
+  $player-hover-color: #FF858C;
+  $player-progress-line: #634e4d;
 
   .volume {
     position: relative;
@@ -18,6 +20,17 @@
       }
       i {
         visibility: hidden;
+      }
+    }
+  }
+  .music-list {
+    position: relative;
+    .fa-music {
+      color: $text-player-color;
+    }
+    &:hover {
+      .fa-music {
+        color: $player-hover-color;
       }
     }
   }
@@ -66,12 +79,12 @@
   .progress {
     flex-grow: 2;
     height: 0.4em;
-    background-color: $text-player-color;
+    background-color: $player-progress-line;
     span {
       display: block;
       width: 0;
       height: 100%;
-      background-color: $player-color;
+      background-color: $text-player-color;
     }
   }
 
@@ -123,7 +136,7 @@
       box-shadow: inset 0 0.25em 1em -0.25em rgba(223, 163, 160, 0.8);
     }
     &:hover::before {
-      background-color: $text-player-color;
+      background-color: #FF858C;
     }
   }
 
@@ -275,14 +288,14 @@
     .item
       = image_tag 'menu_intro_2.png', class: 'img-responsive center-block'
   .info
+    %h3.song-name
+    %h4.author-name Автор
     .time
       %span.current-time 0:00
       %span.progress
         %span
       %span.duration 0:00
       //TODO: дані про пісню беруться з БД
-    %h3.song-name
-    %h4.author-name Автор
   .actions
     .volume
       %i.fa.fa-volume-off.fa-lg
@@ -295,7 +308,9 @@
     %button.button.next-song
       .arrow
       .arrow
-    %button.repeat
+    .music-list
+      %i.fa.fa-music
+    -#%button.repeat
   %audio#my-audio.format-player{ prelaod: '' }
     -#%source{ src: "#{ @song }", type: 'audio/mp3' }
     %source{ type: 'audio/mp3' }
