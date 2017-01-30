@@ -4,37 +4,6 @@
   $player-hover-color: #FF858C;
   $player-progress-line: #634e4d;
 
-  .volume {
-    position: relative;
-    .fa-volume-off {
-      color: $text-player-color;
-    }
-    #id-range {
-      bottom: 10px;
-      position: absolute;
-      visibility: hidden;
-    }
-    &:hover {
-      #id-range {
-        visibility: visible;
-      }
-      i {
-        visibility: hidden;
-      }
-    }
-  }
-  .music-list {
-    position: relative;
-    .fa-music {
-      color: $text-player-color;
-    }
-    &:hover {
-      .fa-music {
-        color: $player-hover-color;
-      }
-    }
-  }
-
   .player {
     position: relative;
     width: 100%;
@@ -58,49 +27,93 @@
         max-height: 26rem;
       }
     }
-  }
-
-  .info {
-    text-align: center;
-  }
-
-  .time {
-    color: $text-player-color;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 0.5em;
-    margin-bottom: 0.5em;
-    > * {
-      margin: 0 0.5em;
+    .info {
+      text-align: center;
+      .time {
+        color: $text-player-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 0.5em;
+        margin-bottom: 0.5em;
+        > * {
+          margin: 0 0.5em;
+        }
+        .progress {
+          flex-grow: 2;
+          height: 0.4em;
+          background-color: $player-progress-line;
+          span {
+            display: block;
+            width: 0;
+            height: 100%;
+            background-color: $text-player-color;
+          }
+        }
+      }
     }
-  }
-
-  .progress {
-    flex-grow: 2;
-    height: 0.4em;
-    background-color: $player-progress-line;
-    span {
-      display: block;
-      width: 0;
-      height: 100%;
-      background-color: $text-player-color;
-    }
-  }
-
-  .actions {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    input {
-      type: range;
-      -webkit-appearance: slider-vertical;
-      width: 8px;
-      height: 75px;
-      margin-top: -5rem;
-
+    .actions {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .volume {
+        position: relative;
+        .fa-volume-off {
+          color: $text-player-color;
+        }
+        #id-range {
+          type: range;
+          -webkit-appearance: slider-vertical;
+          width: 8px;
+          height: 75px;
+          margin-top: -5rem;
+          bottom: 10px;
+          position: absolute;
+          visibility: hidden;
+        }
+        &:hover {
+          #id-range {
+            visibility: visible;
+          }
+          i {
+            visibility: hidden;
+          }
+        }
+      }
+      .music-list {
+        position: relative;
+        .fa-music {
+          color: $text-player-color;
+        }
+        &:hover {
+          .fa-music {
+            color: $player-hover-color;
+          }
+        }
+      }
+      .play-pause {
+        width: 4em;
+        height: 4em;
+      }
+      .previously-song {
+        right: -0.25em;
+        margin-left: 0.375em;
+        transform: scaleX(-1);
+      }
+      .next-song {
+        left: -0.25em;
+        margin-right: 0.375em;
+      }
+      .previously-song .arrow, .next-song .arrow {
+        width: 20%;
+        height: 20%;
+        margin-left: 12%;
+      }
+      .previously-song .arrow:first-child, .next-song .arrow:first-child {
+        margin-left: -4%;
+      }
     }
   }
 
@@ -138,22 +151,6 @@
     &:hover::before {
       background-color: #FF858C;
     }
-  }
-
-  .play-pause {
-    width: 4em;
-    height: 4em;
-  }
-
-  .previously-song {
-    right: -0.25em;
-    margin-left: 0.375em;
-    transform: scaleX(-1);
-  }
-
-  .next-song {
-    left: -0.25em;
-    margin-right: 0.375em;
   }
 
   .button .arrow {
@@ -214,16 +211,6 @@
     }
   }
 
-  .previously-song .arrow, .next-song .arrow {
-    width: 20%;
-    height: 20%;
-    margin-left: 12%;
-  }
-
-  .previously-song .arrow:first-child, .next-song .arrow:first-child {
-    margin-left: -4%;
-  }
-
   .button:active .arrow::before {
     background-color: $text-player-color;
   }
@@ -232,32 +219,6 @@
     &::before, &::after {
       background-color: $text-player-color;
     }
-  }
-
-    //змішувач зліва
-  .audio-volume {
-    width: 1.375em;
-    height: 1.375em;
-    color: $text-player-color;
-    .arrow {
-      position: absolute;
-      top: 0.1875em;
-      left: 0;
-      width: 0.375em;
-      height: 0.125em;
-      color: inherit;
-      background-color: currentColor;
-    }
-  }
-
-    //REPEAT!!!
-  .repeat {
-    width: 1.375em;
-    height: 1.375em;
-    color: $text-player-color;
-    border: 0.125em solid;
-    border-right-color: transparent;
-    border-radius: 50%;
   }
 
   .audio-volume:active, .playing:active, .play-pause:active, .arrow:active, .repeat:active {
@@ -309,21 +270,19 @@
       .arrow
       .arrow
     .music-list
-      %i.fa.fa-music
-    -#%button.repeat
+      %i.fa.fa-music.fa-lg
   %audio#my-audio.format-player{ prelaod: '' }
-    -#%source{ src: "#{ @song }", type: 'audio/mp3' }
     %source{ type: 'audio/mp3' }
 
 :javascript
-  let songs = ['Barbra_Streisand.mp3', 'Im_niasha.mp3', 'in_the_sky.mp3', 'Basta.mp3', 'lp.mp3'];
+  var songs = ['Barbra_Streisand.mp3', 'Im_niasha.mp3', 'in_the_sky.mp3', 'Basta.mp3', 'lp.mp3'];
 
   function findPosition() {
-    let songName = $('#my-audio').find('source').attr('src');
+    var songName = $('#my-audio').find('source').attr('src');
     return songs.findIndex(function(el) {return el == songName});
   }
   function nextSong(currentPosition) {
-    let newPosition = 0;
+    var newPosition = 0;
     if (currentPosition < songs.length - 1) {
       newPosition = currentPosition + 1;
     }
@@ -331,7 +290,7 @@
   }
 
   function prevSong(currentPosition) {
-    let newPosition = songs.length - 1;
+    var newPosition = songs.length - 1;
     if (currentPosition > 0) {
       newPosition = currentPosition - 1;
     }
@@ -355,12 +314,12 @@
   }
 
   $('.next-song').on('click', function() {
-    let curentPosition = findPosition();
+    var curentPosition = findPosition();
     changeSong(nextSong(curentPosition));
   });
 
   $('.previously-song').on('click', function() {
-    let curentPosition = findPosition();
+    var curentPosition = findPosition();
     changeSong(prevSong(curentPosition));
   });
 
@@ -379,13 +338,13 @@
   });
 
   //audio
-  let vid = document.getElementById('my-audio');
+  var vid = document.getElementById('my-audio');
   $("#id-range").on("input change", function() {
     vid.volume = document.getElementById("id-range").value;
   });
 
   //player logic
-  let player = $('.player'),
+  var player = $('.player'),
     audio = player.find('audio'),
     duration = $('.duration'),
     currentTime = $('.current-time'),
