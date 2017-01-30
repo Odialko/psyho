@@ -18,7 +18,7 @@
       font-size: 87.5%;
       color: $text-player-color;
     }
-    .browser-player {
+    .slick-player {
       margin: 15px 0 0 0;
       padding: 1rem;
       width: 100%;
@@ -239,7 +239,7 @@
   }
 
 .player.paused
-  .browser-player.center-block
+  .slick-player.center-block.test-slick
     .item
       = image_tag 'news_img.png', class: 'img-responsive center-block'
     .item
@@ -325,17 +325,28 @@
 
   //slick slider
   $(document).ready(function(){
-
     setSrc(songs[Math.floor(Math.random() * (songs.length - 1))]);
-
-    $('.browser-player').slick({
-      arrows: false,
-      autoplay: true,
-      autoplaySpeed: 2000,
-      speed: 1000
-    });
-
+    // $('.slick-player').slick({
+    //   arrows: false,
+    //   autoplay: true,
+    //   autoplaySpeed: 2000,
+    //   speed: 1000
+    // });
   });
+
+  $(document).ready(function(){
+    setSrc(songs[Math.floor(Math.random() * (songs.length - 1))]);
+  });
+
+   function createSlick(){
+      $(".slick-player").not('.slick-initialized').slick({
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        speed: 1000
+      });
+   }
+  createSlick();
 
   //audio
   var vid = document.getElementById('my-audio');
