@@ -4,18 +4,24 @@
     text-decoration: none;
     a {
       text-decoration: none;
+      //visibility: hidden;
     }
+    //&:hover {
+    //  a {
+    //    visibility: visible;
+    //  }
+    //}
     .side-bar-button {
-    font-size: 15px;
+      font-size: 15px;
       text-decoration: none;
       color: #94000c;
       padding: 5px;
       border-left: 3px solid #ebecec;
-    }
-    .side-bar-button:hover {
-      border-left: 3px solid #94000c;
-      background-color: white;
-      font-weight: 600;
+      &:hover {
+        border-left: 3px solid #94000c;
+        background-color: white;
+        font-weight: 600;
+      }
     }
   }
   @media (min-width: 768px) and (max-width: 1200px) {

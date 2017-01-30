@@ -1,0 +1,420 @@
+:scss
+  $player-color: #190e13;
+  $text-player-color: #fff;
+  $player-hover-color: #FF858C;
+  $player-progress-line: #634e4d;
+
+  .player {
+    position: relative;
+    width: 100%;
+    min-height: 10em;
+    background-color: $player-color;
+    h3 {
+      margin-bottom: 0.5em;
+      font-weight: 400;
+      color: $text-player-color;
+    }
+    h4 {
+      font-size: 87.5%;
+      color: $text-player-color;
+    }
+    .browser-player {
+      margin: 15px 0 0 0;
+      padding: 1rem;
+      width: 100%;
+      img {
+        width: 100%;
+        max-height: 26rem;
+      }
+    }
+    .info {
+      text-align: center;
+      .time {
+        color: $text-player-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 0.5em;
+        margin-bottom: 0.5em;
+        > * {
+          margin: 0 0.5em;
+        }
+        .progress {
+          flex-grow: 2;
+          height: 0.4em;
+          background-color: $player-progress-line;
+          span {
+            display: block;
+            width: 0;
+            height: 100%;
+            background-color: $text-player-color;
+          }
+        }
+      }
+    }
+    .actions {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .volume {
+        position: relative;
+        .fa-volume-off {
+          color: $text-player-color;
+        }
+        #id-range {
+          type: range;
+          -webkit-appearance: slider-vertical;
+          width: 8px;
+          height: 75px;
+          margin-top: -5rem;
+          bottom: 10px;
+          position: absolute;
+          visibility: hidden;
+        }
+        &:hover {
+          #id-range {
+            visibility: visible;
+          }
+          i {
+            visibility: hidden;
+          }
+        }
+      }
+      .music-list {
+        position: relative;
+        .fa-music {
+          color: $text-player-color;
+        }
+        &:hover {
+          .fa-music {
+            color: $player-hover-color;
+          }
+        }
+      }
+      .play-pause {
+        width: 4em;
+        height: 4em;
+      }
+      .previously-song {
+        right: -0.25em;
+        margin-left: 0.375em;
+        transform: scaleX(-1);
+      }
+      .next-song {
+        left: -0.25em;
+        margin-right: 0.375em;
+      }
+      .previously-song .arrow, .next-song .arrow {
+        width: 20%;
+        height: 20%;
+        margin-left: 12%;
+      }
+      .previously-song .arrow:first-child, .next-song .arrow:first-child {
+        margin-left: -4%;
+      }
+    }
+  }
+
+  button {
+    appearance: none;
+    outline: none;
+    position: relative;
+    padding: 0;
+    font-size: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .button {
+    width: 3em;
+    height: 3em;
+    background-color: $player-color;
+    border: none;
+    border-radius: 50%;
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      width: 80%;
+      height: 80%;
+      transform: translate(-50%, -50%);
+      background-color: $player-color;
+      border: 0.125em solid $text-player-color;
+      border-radius: 50%;
+      box-shadow: inset 0 0.25em 1em -0.25em rgba(223, 163, 160, 0.8);
+    }
+    &:hover::before {
+      background-color: #FF858C;
+    }
+  }
+
+  .button .arrow {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    width: 30%;
+    height: 30%;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+    &::before {
+      content: '';
+      position: absolute;
+      left: -50%;
+      width: 100%;
+      height: 100%;
+      transform: scale(1.2, 0.7) rotate(45deg);
+      background-color: $text-player-color;
+      box-shadow: inset 0 0.125em 0.125em -0.0625em rgba(0, 0, 0, 0.15), 0.0625em 0.0625em 0.125em rgba(255, 255, 255, 1);
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      left: -50%;
+      width: 100%;
+      height: 100%;
+      transform: scale(1.2, 0.7) rotate(45deg);
+      background-color: $text-player-color;
+      box-shadow: inset 0 0.125em 0.125em -0.0625em rgba(0, 0, 0, 0.15), 0.0625em 0.0625em 0.125em rgba(255, 255, 255, 1);
+      left: 0;
+      transform: none;
+      background-color: transparent;
+      box-shadow: inset 0.0625em 0 0.125em -0.0625em rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .paused .play-pause .arrow {
+    margin-left: 0.1875em;
+  }
+
+  .playing .play-pause .arrow {
+    &::before {
+      left: 0;
+      width: 0.4375em;
+      transform: none;
+      background-color: $text-player-color;
+      box-shadow: inset 0.0625em 0.125em 0.125em -0.0625em rgba(0, 0, 0, 0.15), 0.0625em 0.0625em 0.125em rgba(255, 255, 255, 1);
+    }
+    &::after {
+      left: 0;
+      width: 0.4375em;
+      transform: none;
+      background-color: $text-player-color;
+      box-shadow: inset 0.0625em 0.125em 0.125em -0.0625em rgba(0, 0, 0, 0.15), 0.0625em 0.0625em 0.125em rgba(255, 255, 255, 1);
+      left: auto;
+      right: 0;
+    }
+  }
+
+  .button:active .arrow::before {
+    background-color: $text-player-color;
+  }
+
+  .playing .play-pause .arrow {
+    &::before, &::after {
+      background-color: $text-player-color;
+    }
+  }
+
+  .audio-volume:active, .playing:active, .play-pause:active, .arrow:active, .repeat:active {
+    color: $text-player-color;
+  }
+  .audio-volume.active, .repeat.active {
+    color: $text-player-color;
+  }
+
+  @media (max-width: 1023px) {
+    h3 {
+      font-size: 1rem;
+    }
+
+    h4 {
+      font-size: 0.9rem;
+    }
+  }
+
+.player.paused
+  .browser-player.center-block
+    .item
+      = image_tag 'news_img.png', class: 'img-responsive center-block'
+    .item
+      = image_tag 'advertaising.png', class: 'img-responsive center-block'
+    .item
+      = image_tag 'Layer-27.png', class: 'img-responsive center-block'
+    .item
+      = image_tag 'menu_intro_2.png', class: 'img-responsive center-block'
+  .info
+    %h3.song-name
+    %h4.author-name Автор
+    .time
+      %span.current-time 0:00
+      %span.progress
+        %span
+      %span.duration 0:00
+      //TODO: дані про пісню беруться з БД
+  .actions
+    .volume
+      %i.fa.fa-volume-off.fa-lg
+      %input#id-range{ min: '0.0', max: '1.0', value: '0.5', step: '0.01', type: 'range' }
+    %button.button.previously-song
+      .arrow
+      .arrow
+    %button.button.play-pause
+      .arrow
+    %button.button.next-song
+      .arrow
+      .arrow
+    .music-list
+      %i.fa.fa-music.fa-lg
+  %audio#my-audio.format-player{ prelaod: '' }
+    %source{ type: 'audio/mp3' }
+
+:javascript
+  var songs = ['Barbra_Streisand.mp3', 'Im_niasha.mp3', 'in_the_sky.mp3', 'Basta.mp3', 'lp.mp3'];
+
+  function findPosition() {
+    var songName = $('#my-audio').find('source').attr('src');
+    return songs.findIndex(function(el) {return el == songName});
+  }
+  function nextSong(currentPosition) {
+    var newPosition = 0;
+    if (currentPosition < songs.length - 1) {
+      newPosition = currentPosition + 1;
+    }
+    return newPosition;
+  }
+
+  function prevSong(currentPosition) {
+    var newPosition = songs.length - 1;
+    if (currentPosition > 0) {
+      newPosition = currentPosition - 1;
+    }
+    return newPosition;
+  }
+
+  function setSrc(src){
+    $('.song-name').text(src);
+    $('#my-audio').find('source').attr('src', src);
+    $('#my-audio').load();
+  }
+
+  function changeSong(newPosition) {
+    $('#my-audio')[0].pause();
+    setSrc(songs[newPosition]);
+    $('#my-audio').oncanplaythrough = $('#my-audio')[0].play() ;
+
+    if (player.hasClass('paused')) {
+      player.removeClass('paused').addClass('playing');
+    }
+  }
+
+  $('.next-song').on('click', function() {
+    var curentPosition = findPosition();
+    changeSong(nextSong(curentPosition));
+  });
+
+  $('.previously-song').on('click', function() {
+    var curentPosition = findPosition();
+    changeSong(prevSong(curentPosition));
+  });
+
+  //slick slider
+  $(document).ready(function(){
+
+    setSrc(songs[Math.floor(Math.random() * (songs.length - 1))]);
+
+    $('.browser-player').slick({
+      arrows: false,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      speed: 1000
+    });
+
+  });
+
+  //audio
+  var vid = document.getElementById('my-audio');
+  $("#id-range").on("input change", function() {
+    vid.volume = document.getElementById("id-range").value;
+  });
+
+  //player logic
+  var player = $('.player'),
+    audio = player.find('audio'),
+    duration = $('.duration'),
+    currentTime = $('.current-time'),
+    progressBar = $('.progress span'),
+    mouseDown = false,
+    rewind, showCurrentTime;
+
+  function secsToMins(time) {
+    var int = Math.floor(time),
+      mins = Math.floor(int / 60),
+      secs = int % 60,
+      newTime = mins + ':' + ('0' + secs).slice(-2);
+
+    return newTime;
+  }
+
+  function getCurrentTime() {
+    var currentTimeFormatted = secsToMins(audio[0].currentTime),
+      currentTimePercentage = audio[0].currentTime / audio[0].duration * 100;
+
+    currentTime.text(currentTimeFormatted);
+    progressBar.css('width', currentTimePercentage + '%');
+
+    if (player.hasClass('playing')) {
+      showCurrentTime = requestAnimationFrame(getCurrentTime);
+    } else {
+      cancelAnimationFrame(showCurrentTime);
+    }
+  }
+
+  audio.on('loadedmetadata', function() {
+    var durationFormatted = secsToMins(audio[0].duration);
+    duration.text(durationFormatted);
+  }).on('ended', function() {
+    if ($('.repeat').hasClass('active')) {
+      audio[0].currentTime = 0;
+      audio[0].play();
+    } else {
+      player.removeClass('playing').addClass('paused');
+      audio[0].currentTime = 0;
+    }
+  });
+
+  $('button').on('click', function() {
+    var self = $(this);
+
+    if (self.hasClass('play-pause') && player.hasClass('paused')) {
+      player.removeClass('paused').addClass('playing');
+      audio[0].play();
+      getCurrentTime();
+    } else if (self.hasClass('play-pause') && player.hasClass('playing')) {
+      player.removeClass('playing').addClass('paused');
+      audio[0].pause();
+    }
+  });
+
+  player.on('mousedown mouseup', function() {
+    mouseDown = !mouseDown;
+  });
+
+  progressBar.parent().on('click mousemove', function(e) {
+    var self = $(this),
+      totalWidth = self.width(),
+      offsetX = e.offsetX,
+      offsetPercentage = offsetX / totalWidth;
+
+    if (mouseDown || e.type === 'click') {
+      audio[0].currentTime = audio[0].duration * offsetPercentage;
+      if (player.hasClass('paused')) {
+        progressBar.css('width', offsetPercentage * 100 + '%');
+      }
+    }
+  });
