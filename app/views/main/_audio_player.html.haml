@@ -1,5 +1,4 @@
 :scss
-
   $player-color: #190e13;
   $text-player-color: #fff;
 
@@ -86,12 +85,9 @@
     align-items: center;
     input {
       type: range;
-      //transform: rotate(90deg);
       -webkit-appearance: slider-vertical;
       width: 8px;
       height: 75px;
-      //position: inherit;
-      //padding: 0 5px;
       margin-top: -5rem;
 
     }
@@ -129,7 +125,7 @@
       box-shadow: inset 0 0.25em 1em -0.25em rgba(223, 163, 160, 0.8);
     }
     &:hover::before {
-      background-color: #D5B6B9;
+      background-color: $text-player-color;
     }
   }
 
@@ -240,30 +236,6 @@
       height: 0.125em;
       color: inherit;
       background-color: currentColor;
-      //&::before {
-      //  content: '';
-      //  position: absolute;
-      //  top: 0;
-      //  left: calc(100% + 0.125em);
-      //  width: 0.5em;
-      //  height: 1em;
-      //  transform: skewX(30deg);
-      //  border-bottom: 0.125em solid;
-      //  border-left: 0.125em solid;
-      //  box-shadow: -0.3125em 0em 0 -0.1875em #DFA3A0, inset 0.375em 0.25em 0 -0.25em #DFA3A0;
-      //}
-      //&::after {
-      //  content: '';
-      //  position: absolute;
-      //  top: 0.6875em;
-      //  left: calc(100% + 0.625em);
-      //  border: 0.25em solid transparent;
-      //  border-left-color: #DFA3A0;
-      //}
-      //&:first-child {
-      //  transform-origin: 0 0.5em;
-      //  transform: scaleY(-1);
-      //}
     }
   }
 
@@ -275,27 +247,6 @@
     border: 0.125em solid;
     border-right-color: transparent;
     border-radius: 50%;
-    //&::before {
-    //  content: '';
-    //  position: absolute;
-    //  top: -0.125em;
-    //  left: -0.125em;
-    //  width: calc(100% + 0.25em);
-    //  height: calc(100% + 0.25em);
-    //  transform: rotate(-45deg);
-    //  border: 0.125em solid transparent;
-    //  border-right-color: currentColor;
-    //  border-radius: 50%;
-    //}
-    //&::after {
-    //  content: '';
-    //  position: absolute;
-    //  top: 50%;
-    //  right: -0.3125em;
-    //  border: 0.25em solid transparent;
-    //  border-top-width: 0.375em;
-    //  border-top-color: currentColor;
-    //}
   }
 
   .audio-volume:active, .playing:active, .play-pause:active, .arrow:active, .repeat:active {
@@ -316,8 +267,6 @@
   }
 
 .player.paused
-  -#- @array = ['Barbra_Streisand.mp3', 'Im_niasha.mp3', 'in_the_sky.mp3', 'Basta.mp3', 'lp.mp3']
-  -#- @song = @array[rand(5)]
   .browser-player.center-block
     .item
       = image_tag 'news_img.png', class: 'img-responsive center-block'
