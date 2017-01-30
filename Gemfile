@@ -60,3 +60,9 @@ gem 'haml-rails'
 
 # https://docs.mongodb.com/ruby-driver/master/tutorials/6.0.0/mongoid-installation/
 gem 'mongoid', '~> 6.0.0'
+
+# kaminari paginator https://github.com/kaminari/kaminari
+gem 'kaminari'
+
+# cute fontawesome http://fontawesome.io/get-started/
+gem 'font-awesome-sass'
