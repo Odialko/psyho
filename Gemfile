@@ -64,3 +64,6 @@ gem 'kaminari'
 
 # cute fontawesome http://fontawesome.io/get-started/
 gem 'font-awesome-sass'
+
+#postgresql
+gem 'pg'
