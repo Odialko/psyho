@@ -1,5 +1,5 @@
 :scss
-  .event-block {
+  #event-block {
     .event-event {
       font-size: 1.4rem;
       margin-left: 1rem;
@@ -37,20 +37,20 @@
     }
   }
 
-.event-block
-  %p.text-left.event-event КАЛЕНДАРЬ СОБЫТИЙ
-  - @events.each do |event|
-    .row
-      .event-list
-        = image_tag event[:img], class: 'img-responsive img-margin pull-left clearfix'
-        .text-container
-          %span.event-date
-            = event[:date]
-          %p.text-left.event-title
-            = event[:title]
-          %p.event-main-text
-            = event[:text]
-          %p.text-right.event-detail-text
-            =link_to 'детальнее', '#'
-  .paginate-container
-    = paginate @events
+-##event-block
+%p.text-left.event-event КАЛЕНДАРЬ СОБЫТИЙ
+- @events.each do |event|
+  .row
+    .event-list
+      = image_tag event[:img], class: 'img-responsive img-margin pull-left clearfix'
+      .text-container
+        %span.event-date
+          = event[:date]
+        %p.text-left.event-title
+          = event[:title]
+        %p.event-main-text
+          = event[:text]
+        %p.text-right.event-detail-text
+          =link_to 'детальнее', '#'
+.paginate-container
+  = paginate @events

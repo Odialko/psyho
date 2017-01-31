@@ -1,3 +1,10 @@
+:scss
+  .current-page {
+    font-weight: 400;
+    font-size: 3rem;
+    margin-left: 4.5px;
+  }
+
 = paginator.render do
   %nav.pagination
     -#= first_page_tag unless current_page.first?
@@ -10,8 +17,8 @@
     -#  - if page.display_tag?
     -#    = page_tag page
 
-
-    = current_page
+    %span.current-page
+      = current_page
 
     = next_page_tag
 
