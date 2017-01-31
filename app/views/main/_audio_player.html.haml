@@ -1,5 +1,5 @@
 :scss
-  $player-color: #190e13;
+  $player-color-background: #190e13;
   $text-player-color: #fff;
   $player-hover-color: #FF858C;
   $player-progress-line: #634e4d;
@@ -8,7 +8,7 @@
     position: relative;
     width: 100%;
     min-height: 10em;
-    background-color: $player-color;
+    background-color: $player-color-background;
     h3 {
       margin-bottom: 0.5em;
       font-weight: 400;
@@ -60,36 +60,76 @@
       align-items: center;
       .volume {
         position: relative;
-        .fa-volume-off {
-          color: $text-player-color;
-        }
-        #id-range {
-          type: range;
-          -webkit-appearance: slider-vertical;
-          width: 8px;
-          height: 75px;
-          margin-top: -5rem;
-          bottom: 10px;
-          position: absolute;
-          visibility: hidden;
-        }
-        &:hover {
-          #id-range {
-            visibility: visible;
+        .volume-img {
+          svg {
+            width: 20px;
+            height: 20px;
+            fill: $text-player-color;
           }
-          i {
+          &:hover,
+          &:focus {
+            svg {
+              visibility: inherit;
+              fill: $player-hover-color;
+            }
+            #id-range {
+              visibility: visible;
+            }
+          }
+          #id-range {
+            type: range;
+            -webkit-appearance: slider-vertical;
+            width: 8px;
+            height: 75px;
+            margin-top: -5rem;
+            bottom: 20px;
+            position: absolute;
             visibility: hidden;
           }
         }
       }
-      .music-list {
+      .play-list {
         position: relative;
-        .fa-music {
-          color: $text-player-color;
-        }
-        &:hover {
-          .fa-music {
-            color: $player-hover-color;
+        .play-list-img {
+          width: 20px;
+          height: 20px;
+          svg {
+            width: 20px;
+            height: 20px;
+            fill: $text-player-color;
+          }
+          &:hover,
+          &:focus {
+            svg {
+              fill: $player-hover-color;
+            }
+            #song-title {
+              width: 250px;
+              height: 150px;
+              position: absolute;
+              visibility: visible;
+              background-color: $player-hover-color;
+              z-index: 11;
+              a:hover {
+                color: $player-color-background;
+                font-weight: 700;
+              }
+            }
+          }
+          #song-title {
+            position: absolute;
+            visibility: hidden;
+            bottom: 100%;
+          }
+          .dropdown {
+            display: inline-block;
+            overflow: auto;
+            a {
+              text-decoration: none;
+              font-weight: 400;
+              color: $text-player-color;
+              line-height: 25px;
+            }
           }
         }
       }
@@ -131,7 +171,7 @@
   .button {
     width: 3em;
     height: 3em;
-    background-color: $player-color;
+    background-color: $player-color-background;
     border: none;
     border-radius: 50%;
     &::before {
@@ -143,7 +183,7 @@
       width: 80%;
       height: 80%;
       transform: translate(-50%, -50%);
-      background-color: $player-color;
+      background-color: $player-color-background;
       border: 0.125em solid $text-player-color;
       border-radius: 50%;
       box-shadow: inset 0 0.25em 1em -0.25em rgba(223, 163, 160, 0.8);
@@ -239,7 +279,7 @@
   }
 
 .player.paused
-  .slick-player.center-block.test-slick
+  .slick-player.center-block
     .item
       = image_tag 'news_img.png', class: 'img-responsive center-block'
     .item
@@ -259,8 +299,9 @@
       //TODO: дані про пісню беруться з БД
   .actions
     .volume
-      %i.fa.fa-volume-off.fa-lg
-      %input#id-range{ min: '0.0', max: '1.0', value: '0.5', step: '0.01', type: 'range' }
+      .volume-img{tabindex: "1"}
+        = inline_svg('volume-up-interface-symbol.svg')
+        %input#id-range{ min: '0.0', max: '1.0', value: '0.5', step: '0.01', type: 'range' }
     %button.button.previously-song
       .arrow
       .arrow
@@ -269,13 +310,18 @@
     %button.button.next-song
       .arrow
       .arrow
-    .music-list
-      %i.fa.fa-music.fa-lg
+    .play-list
+      .play-list-img{tabindex: "1"}
+        = inline_svg('song-playlist.svg')
+        %div#song-title.dropdown
+          %ol#songs-list
   %audio#my-audio.format-player{ prelaod: '' }
     %source{ type: 'audio/mp3' }
 
 :javascript
-  var songs = ['Barbra_Streisand.mp3', 'Im_niasha.mp3', 'in_the_sky.mp3', 'Basta.mp3', 'lp.mp3'];
+  var songs = ['Barbra_Streisand.mp3', 'Im_niasha.mp3', 'in_the_sky.mp3', 'Basta.mp3', 'lp.mp3',
+    'Rammstein_-_Mutter.mp3', 'Rammstein_-_Pussy.mp3', 'Rammstein_-_Sonne.mp3',
+    'Rammstein_-_Zwitter.mp3'];
 
   function findPosition() {
     var songName = $('#my-audio').find('source').attr('src');
@@ -303,13 +349,16 @@
     $('#my-audio').load();
   }
 
-  function changeSong(newPosition) {
+  function changeSong(newPosition, event) {
     $('#my-audio')[0].pause();
     setSrc(songs[newPosition]);
-    $('#my-audio').oncanplaythrough = $('#my-audio')[0].play() ;
+    $('#my-audio').oncanplaythrough = $('#my-audio')[0].play();
 
     if (player.hasClass('paused')) {
       player.removeClass('paused').addClass('playing');
+    }
+    if (event) {
+      event.preventDefault();
     }
   }
 
@@ -323,22 +372,24 @@
     changeSong(prevSong(curentPosition));
   });
 
-  //slick slider
-  $(document).ready(function(){
-    setSrc(songs[Math.floor(Math.random() * (songs.length - 1))]);
-    // $('.slick-player').slick({
-    //   arrows: false,
-    //   autoplay: true,
-    //   autoplaySpeed: 2000,
-    //   speed: 1000
-    // });
-  });
+  //for songs list
+  //TODO: thinking about writing songs-title to list
+  function write_songs(songsArr){
+    var html_song = "";
+    for (var i = 0; i < songsArr.length; i++ ) {
+      html_song += "<li>" + "<a" + ' href="", onclick=\"changeSong(' + i + ', event)\">' +
+                    songsArr[i] + "</a>" + "</li>";
+                    // + " - " + songsArr[i].currentTime
+    }
+    document.getElementById("songs-list").innerHTML = html_song;
+  }
 
   $(document).ready(function(){
     setSrc(songs[Math.floor(Math.random() * (songs.length - 1))]);
+    write_songs(songs);
   });
 
-   function createSlick(){
+  function createSlick(){
       $(".slick-player").not('.slick-initialized').slick({
         arrows: false,
         autoplay: true,
