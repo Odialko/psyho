@@ -11,6 +11,15 @@ class HomeController < ApplicationController
     end
   end
 
+  def events
+    stub_data
+    @events = Kaminari.paginate_array(@events).page(params[:page]).per(5)
+    respond_to do |format|
+      format.html { render 'main/events' }
+      format.js { render 'main/events' }
+    end
+  end
+
   private
 
   def stub_data
