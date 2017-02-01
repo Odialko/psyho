@@ -64,4 +64,4 @@ gem 'kaminari'
 gem 'font-awesome-sass'
 
 #postgresql
-gem 'pg'
+# gem 'pg'
