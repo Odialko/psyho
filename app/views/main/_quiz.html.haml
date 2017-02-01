@@ -9,6 +9,13 @@
     }
     .quiz-points {
       .points-container {
+        .point-number {
+          background-color: #94000c;
+          border-radius: 50%;
+          padding: 0px 3.5px 0px 3.5px;
+          color: white;
+          font-size: 0.8em;
+        }
         border-bottom: 1px solid #94000c;
         tr {
           td {
@@ -53,19 +60,23 @@
       .points-container
         %table
           %tr
-            %td 1
+            %td
+              %span.point-number 1
             %td Необходимы
             %td 4
           %tr
-            %td 2
+            %td
+              %span.point-number 2
             %td Вполне допустимы
             %td 23
           %tr
-            %td 3
+            %td
+              %span.point-number 3
             %td Допустимы, но ими нельзя злоупотреблять
             %td 54
           %tr
-            %td 4
+            %td
+              %span.point-number 4
             %td Совершенно недопустимы
             %td 125
       .voted-container
