@@ -18,8 +18,5 @@
     = javascript_include_tag '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js'
 
   %body
-    -#= render 'layouts/header_picture'
     = yield
-
-    - if request.path.eql? root_path
-      = render partial: 'layouts/footer'
+    = render partial: 'layouts/footer' unless  params[:action].eql?('index')
