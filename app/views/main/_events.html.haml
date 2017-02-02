@@ -1,9 +1,12 @@
 :scss
+
+  $title-text-color: #94000c;
+
   #event-block {
+    margin-top: 35px;
     .event-event {
-      font-size: 1.4rem;
       margin-left: 1rem;
-      color: #94000c;
+      color: $title-text-color;
     }
     .event-list {
       margin-left: 20px;
@@ -17,7 +20,7 @@
         padding-top: 0.5rem;
         .event-date {
           font-size: 1.2rem;
-          color: #94000c;
+          color: $title-text-color;
         }
         .event-title {
           font-size: 1.4rem;
@@ -37,20 +40,35 @@
     }
   }
 
--##event-block
-%p.text-left.event-event КАЛЕНДАРЬ СОБЫТИЙ
-- @events.each do |event|
-  .row
-    .event-list
-      = image_tag event[:img], class: 'img-responsive img-margin pull-left clearfix'
-      .text-container
-        %span.event-date
-          = event[:date]
-        %p.text-left.event-title
-          = event[:title]
-        %p.event-main-text
-          = event[:text]
-        %p.text-right.event-detail-text
-          =link_to 'детальнее', '#'
-.paginate-container
-  = paginate @events
+   @media ( min-width: 768px ) {
+     #event-block {
+       .event-event {
+         font-size: 1rem;
+       }
+     }
+   }
+
+   @media ( min-width: 1024px ) {
+     #event-block {
+       .event-event {
+         font-size: 2.4rem;
+       }
+     }
+   }
+#event-block
+  %p.text-left.event-event КАЛЕНДАРЬ СОБЫТИЙ
+  - @events.each do |event|
+    .row
+      .event-list
+        = image_tag event[:img], class: 'img-responsive img-margin pull-left clearfix'
+        .text-container
+          %span.event-date
+            = event[:date]
+          %p.text-left.event-title
+            = event[:title]
+          %p.event-main-text
+            = event[:text]
+          %p.text-right.event-detail-text
+            =link_to 'детальнее', '#'
+  .paginate-container
+    = paginate @events

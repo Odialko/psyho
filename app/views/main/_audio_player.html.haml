@@ -281,16 +281,14 @@
 .player.paused
   .slick-player.center-block
     .item
-      = image_tag 'news_img.png', class: 'img-responsive center-block'
+      = image_tag 'relax_1.jpg', class: 'img-responsive center-block'
     .item
-      = image_tag 'advertaising.png', class: 'img-responsive center-block'
+      = image_tag 'relax_2.jpg', class: 'img-responsive center-block'
     .item
-      = image_tag 'Layer-27.png', class: 'img-responsive center-block'
-    .item
-      = image_tag 'menu_intro_2.png', class: 'img-responsive center-block'
+      = image_tag 'relax_3.jpg', class: 'img-responsive center-block'
   .info
     %h3.song-name
-    %h4.author-name Автор
+    -#%h4.author-name Автор
     .time
       %span.current-time 0:00
       %span.progress
@@ -319,9 +317,7 @@
     %source{ type: 'audio/mp3' }
 
 :javascript
-  var songs = ['Barbra_Streisand.mp3', 'Im_niasha.mp3', 'in_the_sky.mp3', 'Basta.mp3', 'lp.mp3',
-    'Rammstein_-_Mutter.mp3', 'Rammstein_-_Pussy.mp3', 'Rammstein_-_Sonne.mp3',
-    'Rammstein_-_Zwitter.mp3'];
+  var songs = ['Skaititajs - Back To Life.mp3'];
 
   function findPosition() {
     var songName = $('#my-audio').find('source').attr('src');

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # TODO: Роути з необов*язковий параметер і аліас
   get 'main', to: 'home#main', as: 'main_page'
+  get 'events', to: 'home#events', as: 'events'
 
   root 'home#index'
 end
