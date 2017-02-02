@@ -1,86 +1,43 @@
 :scss
   footer {
-    margin-top: 40px;
-    height: 130%;
-    background-color: #000000;
-    .social-link {
-      margin-left: 15rem;
-      .container-fluid {
+    .custom-footer-container {
+      background-color: black;
+      min-height: 40px;
+      height: 100%;
+      margin-top: 10px;
+      text-align: center;
+      .image-buttons {
         .social-image {
-          margin-top: 5px;
+          margin-left: 2%;
           img {
-            width: 90%;
+            width: 4rem;
           }
         }
       }
     }
   }
 
-  @media ( min-width: 1201px ) and ( max-width: 1700px ) {
-    footer {
-      .social-link {
-        margin-left: 9.5rem;
-      }
-    }
-  }
-
-  @media (max-width: 1200px) {
-    footer {
-      height: 130%;
-      .social-link {
-        margin-left: 7.5rem;
-      }
-    }
-  }
-
-  @media (max-width: 1024px) {
-    footer {
-      height: 130%;
-      .social-link {
-        margin-left: 7.3rem;
-      }
-    }
-  }
-
-  @media (max-width: 991px) {
-    footer {
-    margin-top: 20px;
-      height: 66%;
-      .social-link {
-        margin-left: 5.6rem;
-      }
-    }
-  }
-
-%footer.footer
-  .social-link
-    .container-fluid
-      .row
-        .col-sm-1.col-xs-5.col-xs-offset-2
-          = link_to 'https://www.facebook.com/' do
-            .social-image
-              = image_tag 'facebook.png', class: 'img-responsive'
-        .col-sm-1.col-xs-5
-          = link_to 'https://plus.google.com' do
-            .social-image
-              = image_tag 'google_plus.png', class: 'img-responsive'
-        .col-sm-1.col-xs-5
-          = link_to 'https://www.instagram.com/' do
-            .social-image
-              = image_tag 'inst.png', class: 'img-responsive'
-        .col-sm-1.col-xs-5
-          = link_to 'https://ok.ru' do
-            .social-image
-              = image_tag 'odnokl.png', class: 'img-responsive'
-        .col-sm-1.col-xs-5
-          = link_to 'https://www.pinterest.com' do
-            .social-image
-              = image_tag 'print.png', class: 'img-responsive'
-        .col-sm-1.col-xs-5
-          = link_to 'https://twitter.com' do
-            .social-image
-              = image_tag 'twit.png', class: 'img-responsive'
-        .col-sm-1.col-xs-5
-          = link_to 'https://vk.com' do
-            .social-image
-              = image_tag 'vk.png', class: 'img-responsive'
+%footer
+  .custom-footer-container
+    .image-buttons
+      = link_to 'https://www.facebook.com/' do
+        %span.social-image
+          = image_tag 'facebook.png'
+      = link_to 'https://plus.google.com' do
+        %span.social-image
+          = image_tag 'google_plus.png'
+      = link_to 'https://www.instagram.com/'  do
+        %span.social-image
+          = image_tag 'inst.png'
+      = link_to 'https://ok.ru' do
+        %span.social-image
+          = image_tag 'odnokl.png'
+      = link_to 'https://www.pinterest.com' do
+        %span.social-image
+          = image_tag 'print.png'
+      = link_to 'https://twitter.com' do
+        %span.social-image
+          = image_tag 'twit.png'
+      = link_to 'https://vk.com' do
+        %span.social-image
+          = image_tag 'vk.png'
